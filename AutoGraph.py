@@ -149,7 +149,7 @@ class AutoGraph:
             print('Number of clusters: ', len(self.centroids))
             print('Job complete')
 
-    def run(self, inpath, outpath, Epath = '', E_label = 'energy'):
+    def run(self, inpath, outpath, Epath = '', E_label = 'energy', res=10.0):
         '''Perform AutoGraph conformational clustering'''
         inpath, outpath = self.formatPaths(inpath, outpath)
         self.set_up(inpath, outpath)
@@ -157,7 +157,7 @@ class AutoGraph:
         self.getAffinityMatrix(inpath, outpath)
         self.getThreshold()
         filtAff = self.getFilteredAffinityMatrix(self.threshold, outpath)
-        communityAssignment = Louvain(filtAff, Q_threshold = 0.0, max_iter = 50, resolution = 1.0)
+        communityAssignment = Louvain(filtAff, Q_threshold = 0.0, max_iter = 50, resolution = res)
         self.getCentroids(communityAssignment, Epath, E_label, filtAff)
         self.report_save(inpath, outpath, communityAssignment)
 
