@@ -9,19 +9,25 @@ from pandas import DataFrame, read_csv
 import os, sys
 from random import sample
 
-if __name__ == '__main__':
+from lib.functions import *
+from lib.rmsd import rmsd, assign_remaining_files, rmsdMatrix
+from lib.LouvainClustering import Louvain
+from lib.findThreshold import findThreshold
+from lib.select_centroids import centroid_energy, centroid_weighted_degree, centroid_eccentricity, centroid_betweenness
+
+#if __name__ == '__main__':
 #if True:
-    from lib.functions import *
-    from lib.rmsd import rmsd, assign_remaining_files, rmsdMatrix
-    from lib.LouvainClustering import Louvain
-    from lib.findThreshold import findThreshold
-    from lib.select_centroids import centroid_energy, centroid_weighted_degree, centroid_eccentricity, centroid_betweenness
-else:
-    from .lib.functions import *
-    from .lib.rmsd import rmsd, assign_remaining_files, rmsdMatrix
-    from .lib.LouvainClustering import Louvain
-    from .lib.findThreshold import findThreshold
-    from .lib.select_centroids import centroid_energy, centroid_weighted_degree, centroid_eccentricity, centroid_betweenness
+#    from lib.functions import *
+#    from lib.rmsd import rmsd, assign_remaining_files, rmsdMatrix
+#    from lib.LouvainClustering import Louvain
+#    from lib.findThreshold import findThreshold
+#    from lib.select_centroids import centroid_energy, centroid_weighted_degree, centroid_eccentricity, centroid_betweenness
+#else:
+#    from .lib.functions import *
+#    from .lib.rmsd import rmsd, assign_remaining_files, rmsdMatrix
+#    from .lib.LouvainClustering import Louvain
+#    from .lib.findThreshold import findThreshold
+#    from .lib.select_centroids import centroid_energy, centroid_weighted_degree, centroid_eccentricity, centroid_betweenness
 
 class AutoGraph:
     '''AutoGraph: Autonomous graph based conformational clustering.\n'''
